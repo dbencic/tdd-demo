@@ -16,7 +16,7 @@
   "author": "dragan.bencic@infobip.com",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.2.0"
+    "chai": "latest",
+    "mocha": "latest"
   }
 }
