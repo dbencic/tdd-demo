@@ -158,15 +158,15 @@ function sortDb(filteredDb){
         return b.ocurency.length - a.ocurency.length
     }).map((el) =>{
         return el.date
-    }).splice(0, 3)
+    })
 }
 
 function findTop3Days(baza, year){
     var filter = filterDb(baza, year)
-    return sortDb(filter)
+    return sortDb(filter).splice(0, 3)
 }
 
-function calculate(baze, year){
+function calculateResult(baze, year){
     // let out = {};
     // Object.getOwnPropertyNames(baze).forEach((dbname)=>{
     //     out[dbname] = findTop3Days(baze[dbname], year);
@@ -174,7 +174,7 @@ function calculate(baze, year){
     // return out;
     return Object.keys(baze)
             .reduce((acc, curr) =>{
-                acc[curr] = getData(baze[curr], year)
+                acc[curr] = findTop3Days(baze[curr], year)
                 return acc
             }, {})
 }

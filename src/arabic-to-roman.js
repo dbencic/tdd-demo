@@ -1,30 +1,25 @@
 const arabicToRomanMap = {
+    0 : "",
     1 : "I",
     4 : "IV",
     5 : "V",
     9: "IX",
     10: "X",
     50: "L",
+    40: "XL",
     100: "C"
 };
 
 function arabicToRoman(num) {
     let roman = arabicToRomanMap[num];
-    if(roman) return roman; //ne morate izbaciti
-    //Postupak je slijedeći
-    //od num oduzeti najveći broj koji možemo oduzeti
-    //i onda "stackati" na rimski rezultat 
-    //odgovarajući rimski ekvivalent
+    if(roman !== undefined) return roman; //ne morate izbaciti
     roman = "";
     let numToSubstract = getNumToSubstract(num);
     let rest = num % numToSubstract;
     let times = (num - rest)/numToSubstract;
     roman += new Array(times).fill(
         arabicToRomanMap[numToSubstract]).join("");
-    
-    if(rest != 0) { //izbaciti ovaj IF
-        roman = roman + arabicToRoman(rest);
-    } 
+    roman = roman + arabicToRoman(rest);
     return roman;
 }
 
